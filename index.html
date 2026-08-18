@@ -821,7 +821,7 @@
       <h1>Esti</h1>
 
       <div class="opening-date">
-        28 · 08 · 2026
+        29 · 08 · 2026
       </div>
 
       <button class="open-button" id="openInvitation">
@@ -842,7 +842,7 @@
   </button>
 
   <audio id="weddingMusic" loop>
-      <source src="../music/wedding.mp3" type="audio/mpeg">
+      <source src="wedding.mp3" type="audio/mpeg">
   </audio>
 
   <!-- =======================================================
@@ -880,7 +880,7 @@
           </h2>
 
           <div class="hero-date">
-            28 AGUSTUS 2026
+            29 AGUSTUS 2026
           </div>
 
         </div>
@@ -1249,6 +1249,11 @@
     openInvitation.addEventListener("click", () => {
 
       opening.classList.add("hide");
+
+      weddingMusic.volume = 0.5;
+      weddingMusic.play().catch(error => {
+        console.log("Musik tidak dapat diputar:", error);
+      });
 
       document.body.classList.remove("locked");
 
