@@ -1,0 +1,1908 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Alya & Fajar — Wedding Invitation</title>
+
+  <meta name="description"
+        content="Undangan pernikahan Alya & Fajar">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+
+  <style>
+    /* =========================================================
+       RESET
+    ========================================================= */
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: #f5f1eb;
+      color: #28251f;
+      font-family: "DM Sans", sans-serif;
+      overflow-x: hidden;
+    }
+
+    body.locked {
+      overflow: hidden;
+    }
+
+    img {
+      width: 100%;
+      display: block;
+    }
+
+    button,
+    input,
+    textarea,
+    select {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    :root {
+      --cream: #f5f1eb;
+      --cream-dark: #e9e0d5;
+      --brown: #4b4036;
+      --brown-light: #75695d;
+      --gold: #b29568;
+      --gold-light: #d7c29c;
+      --white: #fffdf9;
+      --dark: #24211d;
+      --shadow: 0 20px 60px rgba(49, 40, 30, .12);
+      --radius: 22px;
+    }
+
+    /* =========================================================
+       GLOBAL
+    ========================================================= */
+
+    .container {
+      width: min(1120px, calc(100% - 40px));
+      margin: auto;
+    }
+
+    section {
+      padding: 110px 0;
+      position: relative;
+    }
+
+    .section-label {
+      color: var(--gold);
+      font-size: 12px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(42px, 7vw, 72px);
+      line-height: .95;
+      font-weight: 500;
+      color: var(--brown);
+    }
+
+    .section-description {
+      max-width: 600px;
+      margin: 25px auto 0;
+      color: var(--brown-light);
+      line-height: 1.8;
+      font-size: 14px;
+    }
+
+    .center {
+      text-align: center;
+    }
+
+    .ornament {
+      width: 100px;
+      height: 1px;
+      background: var(--gold-light);
+      margin: 25px auto;
+      position: relative;
+    }
+
+    .ornament::before {
+      content: "✦";
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      background: var(--cream);
+      color: var(--gold);
+      padding: 0 12px;
+      font-size: 12px;
+    }
+
+    /* =========================================================
+       OPENING SCREEN
+    ========================================================= */
+
+    #opening {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background:
+        linear-gradient(
+          rgba(25, 22, 18, .48),
+          rgba(25, 22, 18, .62)
+        ),
+        url("https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=2000&q=90")
+        center/cover;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      transition: opacity 1s ease, visibility 1s ease;
+    }
+
+    #opening.hide {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .opening-content {
+      width: min(700px, 90%);
+      animation: openingUp 1.4s ease both;
+    }
+
+    .opening-small {
+      font-size: 11px;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .opening-content h1 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(65px, 12vw, 130px);
+      font-weight: 400;
+      line-height: .75;
+    }
+
+    .opening-and {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 42px;
+      color: var(--gold-light);
+      margin: 15px 0;
+    }
+
+    .opening-date {
+      letter-spacing: 5px;
+      font-size: 12px;
+      margin-top: 25px;
+    }
+
+    .open-button {
+      margin-top: 40px;
+      border: 1px solid rgba(255,255,255,.6);
+      background: rgba(255,255,255,.08);
+      color: white;
+      padding: 15px 28px;
+      border-radius: 100px;
+      letter-spacing: 2px;
+      font-size: 11px;
+      backdrop-filter: blur(10px);
+      transition: .3s;
+    }
+
+    .open-button:hover {
+      background: white;
+      color: var(--brown);
+      transform: translateY(-3px);
+    }
+
+    @keyframes openingUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* =========================================================
+       NAVIGATION
+    ========================================================= */
+
+    .nav {
+      position: fixed;
+      left: 50%;
+      bottom: 25px;
+      transform: translateX(-50%);
+      z-index: 1000;
+
+      width: min(650px, calc(100% - 30px));
+      padding: 9px;
+
+      display: flex;
+      justify-content: space-around;
+
+      background: rgba(255,253,249,.86);
+      border: 1px solid rgba(178,149,104,.2);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(20px);
+
+      border-radius: 100px;
+    }
+
+    .nav a {
+      width: 46px;
+      height: 46px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--brown-light);
+      font-size: 16px;
+      border-radius: 50%;
+      transition: .3s;
+    }
+
+    .nav a:hover {
+      background: var(--brown);
+      color: white;
+    }
+
+    /* =========================================================
+       HERO
+    ========================================================= */
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+
+      background:
+        linear-gradient(
+          90deg,
+          rgba(245,241,235,.98) 0%,
+          rgba(245,241,235,.9) 40%,
+          rgba(245,241,235,.15) 100%
+        ),
+        url("https://images.unsplash.com/photo-1606800052052-a08af7148866?auto=format&fit=crop&w=2000&q=90")
+        center/cover;
+    }
+
+    .hero-content {
+      width: 55%;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-subtitle {
+      letter-spacing: 6px;
+      text-transform: uppercase;
+      font-size: 11px;
+      color: var(--gold);
+      margin-bottom: 25px;
+    }
+
+    .hero h2 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(70px, 11vw, 140px);
+      font-weight: 400;
+      line-height: .72;
+      color: var(--brown);
+    }
+
+    .hero h2 span {
+      display: block;
+      margin-left: 60px;
+      color: var(--gold);
+    }
+
+    .hero-date {
+      margin-top: 35px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      color: var(--brown-light);
+      font-size: 13px;
+      letter-spacing: 3px;
+    }
+
+    .hero-date::before {
+      content: "";
+      width: 50px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    /* =========================================================
+       QUOTE
+    ========================================================= */
+
+    .quote {
+      background: var(--brown);
+      color: white;
+      text-align: center;
+    }
+
+    .quote p {
+      max-width: 760px;
+      margin: auto;
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(28px, 4vw, 45px);
+      line-height: 1.35;
+    }
+
+    .quote small {
+      display: block;
+      margin-top: 25px;
+      color: var(--gold-light);
+      letter-spacing: 2px;
+    }
+
+    /* =========================================================
+       COUPLE
+    ========================================================= */
+
+    .couple-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      margin-top: 80px;
+    }
+
+    .person {
+      text-align: center;
+    }
+
+    .person-photo {
+      width: min(330px, 80%);
+      aspect-ratio: 3/4;
+      margin: auto;
+      overflow: hidden;
+      border-radius: 180px 180px 15px 15px;
+      box-shadow: var(--shadow);
+    }
+
+    .person-photo img {
+      height: 100%;
+      object-fit: cover;
+      transition: transform .7s;
+    }
+
+    .person:hover img {
+      transform: scale(1.05);
+    }
+
+    .person h3 {
+      margin-top: 30px;
+      font-family: "Cormorant Garamond", serif;
+      font-size: 48px;
+      font-weight: 500;
+      color: var(--brown);
+    }
+
+    .person .parents {
+      color: var(--brown-light);
+      font-size: 13px;
+      line-height: 1.8;
+      margin-top: 10px;
+    }
+
+    /* =========================================================
+       COUNTDOWN
+    ========================================================= */
+
+    .countdown-section {
+      background: #ece4d9;
+    }
+
+    .countdown {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      max-width: 750px;
+      margin: 60px auto 0;
+      gap: 20px;
+    }
+
+    .time-box {
+      background: rgba(255,255,255,.5);
+      border: 1px solid rgba(178,149,104,.2);
+      padding: 30px 15px;
+      text-align: center;
+    }
+
+    .time-box strong {
+      display: block;
+      font-family: "Cormorant Garamond", serif;
+      font-size: 55px;
+      font-weight: 500;
+      color: var(--brown);
+    }
+
+    .time-box span {
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    /* =========================================================
+       EVENT
+    ========================================================= */
+
+    .event-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      margin-top: 70px;
+    }
+
+    .event-card {
+      padding: 55px 40px;
+      background: var(--white);
+      border: 1px solid rgba(178,149,104,.18);
+      text-align: center;
+      box-shadow: 0 10px 40px rgba(60,45,30,.05);
+    }
+
+    .event-icon {
+      font-size: 30px;
+      color: var(--gold);
+      margin-bottom: 25px;
+    }
+
+    .event-card h3 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 42px;
+      font-weight: 500;
+      color: var(--brown);
+    }
+
+    .event-date {
+      margin: 20px 0;
+      color: var(--gold);
+      letter-spacing: 2px;
+      font-size: 12px;
+    }
+
+    .event-info {
+      color: var(--brown-light);
+      line-height: 1.9;
+      font-size: 14px;
+    }
+
+    .maps-button {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 12px 22px;
+      border: 1px solid var(--gold);
+      color: var(--brown);
+      font-size: 11px;
+      letter-spacing: 2px;
+      transition: .3s;
+    }
+
+    .maps-button:hover {
+      background: var(--brown);
+      border-color: var(--brown);
+      color: white;
+    }
+
+    /* =========================================================
+       STORY
+    ========================================================= */
+
+    .story {
+      background: var(--cream-dark);
+    }
+
+    .timeline {
+      max-width: 800px;
+      margin: 80px auto 0;
+      position: relative;
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      background: var(--gold-light);
+      transform: translateX(-50%);
+    }
+
+    .story-item {
+      width: 50%;
+      padding: 0 50px 70px;
+      position: relative;
+    }
+
+    .story-item:nth-child(even) {
+      margin-left: 50%;
+    }
+
+    .story-item::after {
+      content: "";
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--gold);
+      position: absolute;
+      top: 5px;
+      right: -5px;
+    }
+
+    .story-item:nth-child(even)::after {
+      left: -5px;
+    }
+
+    .story-year {
+      color: var(--gold);
+      letter-spacing: 3px;
+      font-size: 11px;
+    }
+
+    .story-item h3 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 35px;
+      margin: 10px 0;
+      font-weight: 500;
+    }
+
+    .story-item p {
+      color: var(--brown-light);
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    /* =========================================================
+       GALLERY
+    ========================================================= */
+
+    .gallery-grid {
+      margin-top: 70px;
+      columns: 3 250px;
+      column-gap: 15px;
+    }
+
+    .gallery-item {
+      margin-bottom: 15px;
+      overflow: hidden;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .gallery-item img {
+      transition: .6s;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.05);
+    }
+
+    /* =========================================================
+       RSVP
+    ========================================================= */
+
+    .rsvp {
+      background: var(--brown);
+      color: white;
+    }
+
+    .rsvp .section-title {
+      color: white;
+    }
+
+    .rsvp .section-description {
+      color: #d9d0c4;
+    }
+
+    .rsvp-form {
+      max-width: 650px;
+      margin: 60px auto 0;
+    }
+
+    .form-group {
+      margin-bottom: 18px;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      border: 1px solid rgba(255,255,255,.2);
+      background: rgba(255,255,255,.08);
+      color: white;
+      padding: 16px;
+      outline: none;
+      border-radius: 2px;
+    }
+
+    .form-group textarea {
+      height: 130px;
+      resize: vertical;
+    }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+      color: #c5bbb0;
+    }
+
+    .form-group select option {
+      color: #222;
+    }
+
+    .submit-button {
+      width: 100%;
+      padding: 16px;
+      background: var(--gold);
+      border: none;
+      color: white;
+      letter-spacing: 2px;
+      font-size: 11px;
+      transition: .3s;
+    }
+
+    .submit-button:hover {
+      background: var(--gold-light);
+      color: var(--brown);
+    }
+
+    /* =========================================================
+       GUESTBOOK
+    ========================================================= */
+
+    .guestbook {
+      margin-top: 60px;
+      display: grid;
+      gap: 15px;
+    }
+
+    .message {
+      background: var(--white);
+      padding: 25px;
+      border-left: 2px solid var(--gold);
+    }
+
+    .message strong {
+      display: block;
+      color: var(--brown);
+      margin-bottom: 7px;
+    }
+
+    .message p {
+      font-size: 13px;
+      line-height: 1.7;
+      color: var(--brown-light);
+    }
+
+    /* =========================================================
+       FOOTER
+    ========================================================= */
+
+    footer {
+      background: #1f1c18;
+      color: white;
+      padding: 90px 20px 150px;
+      text-align: center;
+    }
+
+    footer h2 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 70px;
+      font-weight: 400;
+    }
+
+    footer p {
+      color: #a89e92;
+      font-size: 12px;
+      margin-top: 20px;
+      letter-spacing: 2px;
+    }
+
+    /* =========================================================
+       MUSIC BUTTON
+    ========================================================= */
+
+    .music-button {
+      position: fixed;
+      right: 20px;
+      top: 20px;
+      z-index: 1001;
+
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+
+      background: rgba(255,253,249,.9);
+      border: 1px solid rgba(178,149,104,.3);
+      box-shadow: 0 10px 30px rgba(0,0,0,.1);
+
+      color: var(--brown);
+      font-size: 17px;
+    }
+
+    .music-button.playing {
+      animation: spin 4s linear infinite;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* =========================================================
+       LIGHTBOX
+    ========================================================= */
+
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 9998;
+      background: rgba(15,13,11,.95);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 30px;
+
+      opacity: 0;
+      visibility: hidden;
+      transition: .3s;
+    }
+
+    .lightbox.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .lightbox img {
+      max-width: 900px;
+      max-height: 90vh;
+      object-fit: contain;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 25px;
+      right: 25px;
+      width: 45px;
+      height: 45px;
+      border: 1px solid rgba(255,255,255,.4);
+      background: transparent;
+      color: white;
+      border-radius: 50%;
+      font-size: 20px;
+    }
+
+    /* =========================================================
+       SCROLL REVEAL
+    ========================================================= */
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(35px);
+      transition: opacity .9s ease, transform .9s ease;
+    }
+
+    .reveal.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* =========================================================
+       RESPONSIVE
+    ========================================================= */
+
+    @media (max-width: 800px) {
+
+      section {
+        padding: 80px 0;
+      }
+
+      .hero {
+        min-height: 100svh;
+        background:
+          linear-gradient(
+            rgba(245,241,235,.78),
+            rgba(245,241,235,.88)
+          ),
+          url("https://images.unsplash.com/photo-1606800052052-a08af7148866?auto=format&fit=crop&w=1200&q=85")
+          center/cover;
+      }
+
+      .hero-content {
+        width: 100%;
+        text-align: center;
+      }
+
+      .hero h2 span {
+        margin-left: 35px;
+      }
+
+      .hero-date {
+        justify-content: center;
+      }
+
+      .couple-grid {
+        grid-template-columns: 1fr;
+        gap: 70px;
+      }
+
+      .countdown {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .event-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .timeline::before {
+        left: 10px;
+      }
+
+      .story-item,
+      .story-item:nth-child(even) {
+        width: 100%;
+        margin-left: 0;
+        padding-left: 40px;
+        padding-right: 0;
+      }
+
+      .story-item::after,
+      .story-item:nth-child(even)::after {
+        left: 5px;
+        right: auto;
+      }
+
+      .nav {
+        bottom: 12px;
+      }
+
+      .nav a {
+        width: 40px;
+        height: 40px;
+        font-size: 14px;
+      }
+
+      footer h2 {
+        font-size: 55px;
+      }
+    }
+
+    @media (max-width: 450px) {
+
+      .container {
+        width: min(100% - 28px, 1120px);
+      }
+
+      .opening-content h1 {
+        font-size: 70px;
+      }
+
+      .hero h2 {
+        font-size: 75px;
+      }
+
+      .hero h2 span {
+        margin-left: 25px;
+      }
+
+      .person h3 {
+        font-size: 42px;
+      }
+
+      .event-card {
+        padding: 45px 25px;
+      }
+    }
+  </style>
+</head>
+
+<body class="locked">
+
+  <!-- =======================================================
+       OPENING
+  ======================================================== -->
+
+  <div id="opening">
+
+    <div class="opening-content">
+
+      <div class="opening-small">
+        The Wedding Of
+      </div>
+
+      <h1>Alya</h1>
+
+      <div class="opening-and">
+        &
+      </div>
+
+      <h1>Fajar</h1>
+
+      <div class="opening-date">
+        12 · 12 · 2026
+      </div>
+
+      <button class="open-button" id="openInvitation">
+        BUKA UNDANGAN
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- =======================================================
+       MUSIC
+  ======================================================== -->
+
+  <button class="music-button" id="musicButton" title="Musik">
+    ♫
+  </button>
+
+  <audio id="weddingMusic" loop>
+    <!--
+      Ganti dengan file musik milikmu.
+      Contoh:
+      <source src="music/wedding.mp3" type="audio/mpeg">
+    -->
+  </audio>
+
+
+  <!-- =======================================================
+       NAVIGATION
+  ======================================================== -->
+
+  <nav class="nav">
+
+    <a href="#home" title="Home">⌂</a>
+    <a href="#couple" title="Mempelai">♡</a>
+    <a href="#event" title="Acara">♧</a>
+    <a href="#gallery" title="Galeri">▧</a>
+    <a href="#rsvp" title="RSVP">✉</a>
+
+  </nav>
+
+
+  <!-- =======================================================
+       HERO
+  ======================================================== -->
+
+  <main id="home">
+
+    <section class="hero">
+
+      <div class="container">
+
+        <div class="hero-content reveal">
+
+          <div class="hero-subtitle">
+            The Wedding Celebration
+          </div>
+
+          <h2>
+            Alya
+            <span>& Fajar</span>
+          </h2>
+
+          <div class="hero-date">
+            12 DESEMBER 2026
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         QUOTE
+    ====================================================== -->
+
+    <section class="quote">
+
+      <div class="container reveal">
+
+        <p>
+          "Dan di antara tanda-tanda kekuasaan-Nya ialah
+          Dia menciptakan untukmu pasangan hidup dari jenismu
+          sendiri, supaya kamu merasa tenteram kepadanya."
+        </p>
+
+        <small>
+          QS. Ar-Rum : 21
+        </small>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         COUPLE
+    ====================================================== -->
+
+    <section id="couple">
+
+      <div class="container">
+
+        <div class="center reveal">
+
+          <div class="section-label">
+            The Couple
+          </div>
+
+          <h2 class="section-title">
+            Dua Hati, Satu Cerita
+          </h2>
+
+          <div class="ornament"></div>
+
+          <p class="section-description">
+            Dengan penuh kebahagiaan, kami mengundang
+            Bapak/Ibu/Saudara/i untuk menjadi bagian dari
+            hari istimewa kami.
+          </p>
+
+        </div>
+
+
+        <div class="couple-grid">
+
+          <div class="person reveal">
+
+            <div class="person-photo">
+
+              <img
+                src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=900&q=85"
+                alt="Alya"
+              >
+
+            </div>
+
+            <h3>Alya Putri</h3>
+
+            <p class="parents">
+              Putri pertama dari<br>
+              Bapak Ahmad & Ibu Siti
+            </p>
+
+          </div>
+
+
+          <div class="person reveal">
+
+            <div class="person-photo">
+
+              <img
+                src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=900&q=85"
+                alt="Fajar"
+              >
+
+            </div>
+
+            <h3>Fajar Ramadhan</h3>
+
+            <p class="parents">
+              Putra pertama dari<br>
+              Bapak Budi & Ibu Rina
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         COUNTDOWN
+    ====================================================== -->
+
+    <section class="countdown-section">
+
+      <div class="container center reveal">
+
+        <div class="section-label">
+          Save The Date
+        </div>
+
+        <h2 class="section-title">
+          Menuju Hari Bahagia
+        </h2>
+
+        <div class="countdown">
+
+          <div class="time-box">
+            <strong id="days">00</strong>
+            <span>Hari</span>
+          </div>
+
+          <div class="time-box">
+            <strong id="hours">00</strong>
+            <span>Jam</span>
+          </div>
+
+          <div class="time-box">
+            <strong id="minutes">00</strong>
+            <span>Menit</span>
+          </div>
+
+          <div class="time-box">
+            <strong id="seconds">00</strong>
+            <span>Detik</span>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         EVENT
+    ====================================================== -->
+
+    <section id="event">
+
+      <div class="container">
+
+        <div class="center reveal">
+
+          <div class="section-label">
+            Wedding Event
+          </div>
+
+          <h2 class="section-title">
+            Waktu & Tempat
+          </h2>
+
+          <div class="ornament"></div>
+
+        </div>
+
+
+        <div class="event-grid">
+
+          <div class="event-card reveal">
+
+            <div class="event-icon">
+              ♡
+            </div>
+
+            <h3>Akad Nikah</h3>
+
+            <div class="event-date">
+              SABTU · 12 DESEMBER 2026
+            </div>
+
+            <div class="event-info">
+              08.00 – 09.00 WIB<br><br>
+
+              Masjid Al-Hikmah<br>
+              Jl. Bahagia No. 12<br>
+              Surabaya, Jawa Timur
+            </div>
+
+            <a
+              href="https://maps.google.com"
+              target="_blank"
+              class="maps-button"
+            >
+              LIHAT LOKASI
+            </a>
+
+          </div>
+
+
+          <div class="event-card reveal">
+
+            <div class="event-icon">
+              ✦
+            </div>
+
+            <h3>Resepsi</h3>
+
+            <div class="event-date">
+              SABTU · 12 DESEMBER 2026
+            </div>
+
+            <div class="event-info">
+              11.00 – 14.00 WIB<br><br>
+
+              Grand Ballroom<br>
+              Jl. Bahagia No. 12<br>
+              Surabaya, Jawa Timur
+            </div>
+
+            <a
+              href="https://maps.google.com"
+              target="_blank"
+              class="maps-button"
+            >
+              LIHAT LOKASI
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         STORY
+    ====================================================== -->
+
+    <section class="story">
+
+      <div class="container">
+
+        <div class="center reveal">
+
+          <div class="section-label">
+            Our Journey
+          </div>
+
+          <h2 class="section-title">
+            Our Love Story
+          </h2>
+
+          <div class="ornament"></div>
+
+        </div>
+
+
+        <div class="timeline">
+
+          <div class="story-item reveal">
+
+            <div class="story-year">
+              2020
+            </div>
+
+            <h3>First Meet</h3>
+
+            <p>
+              Berawal dari sebuah pertemuan sederhana
+              yang ternyata menjadi awal dari cerita panjang
+              kami.
+            </p>
+
+          </div>
+
+
+          <div class="story-item reveal">
+
+            <div class="story-year">
+              2022
+            </div>
+
+            <h3>A Beautiful Journey</h3>
+
+            <p>
+              Kami mulai mengenal satu sama lain lebih dalam
+              dan belajar untuk tumbuh bersama.
+            </p>
+
+          </div>
+
+
+          <div class="story-item reveal">
+
+            <div class="story-year">
+              2025
+            </div>
+
+            <h3>The Proposal</h3>
+
+            <p>
+              Dengan penuh keyakinan, kami memutuskan
+              untuk membawa hubungan ini menuju tahap berikutnya.
+            </p>
+
+          </div>
+
+
+          <div class="story-item reveal">
+
+            <div class="story-year">
+              2026
+            </div>
+
+            <h3>Forever Starts Here</h3>
+
+            <p>
+              Hari ketika dua hati memilih untuk berjalan
+              bersama dalam satu ikatan pernikahan.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         GALLERY
+    ====================================================== -->
+
+    <section id="gallery">
+
+      <div class="container">
+
+        <div class="center reveal">
+
+          <div class="section-label">
+            Our Moments
+          </div>
+
+          <h2 class="section-title">
+            Captured Memories
+          </h2>
+
+          <div class="ornament"></div>
+
+        </div>
+
+
+        <div class="gallery-grid">
+
+          <div class="gallery-item reveal">
+            <img
+              src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1000&q=85"
+              alt="Wedding photo"
+            >
+          </div>
+
+          <div class="gallery-item reveal">
+            <img
+              src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=1000&q=85"
+              alt="Wedding photo"
+            >
+          </div>
+
+          <div class="gallery-item reveal">
+            <img
+              src="https://images.unsplash.com/photo-1523438885200-e635ba2c371e?auto=format&fit=crop&w=1000&q=85"
+              alt="Wedding photo"
+            >
+          </div>
+
+          <div class="gallery-item reveal">
+            <img
+              src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1000&q=85"
+              alt="Wedding photo"
+            >
+          </div>
+
+          <div class="gallery-item reveal">
+            <img
+              src="https://images.unsplash.com/photo-1465495976277-4387d4b0e4a6?auto=format&fit=crop&w=1000&q=85"
+              alt="Wedding photo"
+            >
+          </div>
+
+          <div class="gallery-item reveal">
+            <img
+              src="https://images.unsplash.com/photo-1507504031003-b417219a0fde?auto=format&fit=crop&w=1000&q=85"
+              alt="Wedding photo"
+            >
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         RSVP
+    ====================================================== -->
+
+    <section id="rsvp" class="rsvp">
+
+      <div class="container">
+
+        <div class="center reveal">
+
+          <div class="section-label">
+            RSVP
+          </div>
+
+          <h2 class="section-title">
+            Konfirmasi Kehadiran
+          </h2>
+
+          <p class="section-description">
+            Mohon konfirmasi kehadiran Anda untuk membantu
+            kami mempersiapkan acara dengan sebaik-baiknya.
+          </p>
+
+        </div>
+
+
+        <form class="rsvp-form reveal" id="rsvpForm">
+
+          <div class="form-group">
+
+            <input
+              type="text"
+              id="guestName"
+              placeholder="Nama Anda"
+              required
+            >
+
+          </div>
+
+
+          <div class="form-group">
+
+            <select id="attendance" required>
+
+              <option value="">
+                Konfirmasi Kehadiran
+              </option>
+
+              <option value="Hadir">
+                Saya akan hadir
+              </option>
+
+              <option value="Tidak Hadir">
+                Saya tidak dapat hadir
+              </option>
+
+            </select>
+
+          </div>
+
+
+          <div class="form-group">
+
+            <input
+              type="number"
+              id="guestCount"
+              placeholder="Jumlah tamu"
+              min="1"
+              max="10"
+              required
+            >
+
+          </div>
+
+
+          <div class="form-group">
+
+            <textarea
+              id="guestMessage"
+              placeholder="Tulis ucapan dan doa..."
+            ></textarea>
+
+          </div>
+
+
+          <button
+            type="submit"
+            class="submit-button"
+          >
+            KIRIM KONFIRMASI
+          </button>
+
+        </form>
+
+
+        <div class="guestbook" id="guestbook">
+
+          <div class="message">
+
+            <strong>Rizky</strong>
+
+            <p>
+              Selamat menempuh hidup baru.
+              Semoga menjadi keluarga yang sakinah.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- =======================================================
+       FOOTER
+  ======================================================== -->
+
+  <footer>
+
+    <div class="container">
+
+      <div class="section-label">
+        Thank You
+      </div>
+
+      <h2>
+        Alya & Fajar
+      </h2>
+
+      <p>
+        12 · 12 · 2026
+      </p>
+
+    </div>
+
+  </footer>
+
+
+  <!-- =======================================================
+       LIGHTBOX
+  ======================================================== -->
+
+  <div class="lightbox" id="lightbox">
+
+    <button class="lightbox-close" id="lightboxClose">
+      ×
+    </button>
+
+    <img id="lightboxImage" src="" alt="Gallery">
+
+  </div>
+
+
+  <!-- =======================================================
+       JAVASCRIPT
+  ======================================================== -->
+
+  <script>
+
+    /* =======================================================
+       OPEN INVITATION
+    ======================================================== */
+
+    const opening = document.getElementById("opening");
+    const openInvitation = document.getElementById("openInvitation");
+
+    openInvitation.addEventListener("click", () => {
+
+      opening.classList.add("hide");
+
+      document.body.classList.remove("locked");
+
+      startMusic();
+
+    });
+
+
+    /* =======================================================
+       COUNTDOWN
+    ======================================================== */
+
+    const weddingDate = new Date(
+      "December 12, 2026 08:00:00"
+    ).getTime();
+
+    function updateCountdown() {
+
+      const now = new Date().getTime();
+
+      const distance = weddingDate - now;
+
+      if (distance <= 0) {
+
+        document.getElementById("days").textContent = "00";
+        document.getElementById("hours").textContent = "00";
+        document.getElementById("minutes").textContent = "00";
+        document.getElementById("seconds").textContent = "00";
+
+        return;
+
+      }
+
+      const days = Math.floor(
+        distance / (1000 * 60 * 60 * 24)
+      );
+
+      const hours = Math.floor(
+        (distance % (1000 * 60 * 60 * 24))
+        / (1000 * 60 * 60)
+      );
+
+      const minutes = Math.floor(
+        (distance % (1000 * 60 * 60))
+        / (1000 * 60)
+      );
+
+      const seconds = Math.floor(
+        (distance % (1000 * 60))
+        / 1000
+      );
+
+      document.getElementById("days").textContent =
+        String(days).padStart(2, "0");
+
+      document.getElementById("hours").textContent =
+        String(hours).padStart(2, "0");
+
+      document.getElementById("minutes").textContent =
+        String(minutes).padStart(2, "0");
+
+      document.getElementById("seconds").textContent =
+        String(seconds).padStart(2, "0");
+
+    }
+
+    updateCountdown();
+
+    setInterval(updateCountdown, 1000);
+
+
+    /* =======================================================
+       SCROLL REVEAL
+    ======================================================== */
+
+    const observer = new IntersectionObserver(
+      entries => {
+
+        entries.forEach(entry => {
+
+          if (entry.isIntersecting) {
+
+            entry.target.classList.add("show");
+
+          }
+
+        });
+
+      },
+      {
+        threshold: .12
+      }
+    );
+
+
+    document
+      .querySelectorAll(".reveal")
+      .forEach(element => observer.observe(element));
+
+
+    /* =======================================================
+       GALLERY LIGHTBOX
+    ======================================================== */
+
+    const galleryItems =
+      document.querySelectorAll(".gallery-item");
+
+    const lightbox =
+      document.getElementById("lightbox");
+
+    const lightboxImage =
+      document.getElementById("lightboxImage");
+
+    const lightboxClose =
+      document.getElementById("lightboxClose");
+
+
+    galleryItems.forEach(item => {
+
+      item.addEventListener("click", () => {
+
+        const image = item.querySelector("img");
+
+        lightboxImage.src = image.src;
+
+        lightbox.classList.add("active");
+
+        document.body.classList.add("locked");
+
+      });
+
+    });
+
+
+    function closeLightbox() {
+
+      lightbox.classList.remove("active");
+
+      document.body.classList.remove("locked");
+
+    }
+
+
+    lightboxClose.addEventListener(
+      "click",
+      closeLightbox
+    );
+
+
+    lightbox.addEventListener("click", event => {
+
+      if (event.target === lightbox) {
+
+        closeLightbox();
+
+      }
+
+    });
+
+
+    /* =======================================================
+       RSVP
+    ======================================================== */
+
+    const rsvpForm =
+      document.getElementById("rsvpForm");
+
+    const guestbook =
+      document.getElementById("guestbook");
+
+
+    rsvpForm.addEventListener("submit", event => {
+
+      event.preventDefault();
+
+      const name =
+        document.getElementById("guestName").value;
+
+      const attendance =
+        document.getElementById("attendance").value;
+
+      const message =
+        document.getElementById("guestMessage").value;
+
+      if (!name || !attendance) {
+
+        alert("Mohon lengkapi data.");
+
+        return;
+
+      }
+
+
+      const newMessage =
+        document.createElement("div");
+
+      newMessage.className = "message";
+
+      newMessage.innerHTML = `
+        <strong>${escapeHTML(name)}</strong>
+        <p>
+          ${escapeHTML(message || attendance)}
+        </p>
+      `;
+
+
+      guestbook.prepend(newMessage);
+
+      rsvpForm.reset();
+
+      alert("Terima kasih atas konfirmasi dan doanya ❤️");
+
+    });
+
+
+    function escapeHTML(text) {
+
+      return text
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+
+    }
+
+
+    /* =======================================================
+       MUSIC
+    ======================================================== */
+
+    const music =
+      document.getElementById("weddingMusic");
+
+    const musicButton =
+      document.getElementById("musicButton");
+
+
+    function startMusic() {
+
+      if (!music.src) return;
+
+      music.play()
+        .then(() => {
+
+          musicButton.classList.add("playing");
+
+        })
+        .catch(() => {});
+
+    }
+
+
+    musicButton.addEventListener("click", () => {
+
+      if (!music.src) {
+
+        alert(
+          "Tambahkan file musik pada bagian <audio> terlebih dahulu."
+        );
+
+        return;
+
+      }
+
+
+      if (music.paused) {
+
+        music.play();
+
+        musicButton.classList.add("playing");
+
+      } else {
+
+        music.pause();
+
+        musicButton.classList.remove("playing");
+
+      }
+
+    });
+
+
+    /* =======================================================
+       ESC KEY
+    ======================================================== */
+
+    document.addEventListener("keydown", event => {
+
+      if (event.key === "Escape") {
+
+        closeLightbox();
+
+      }
+
+    });
+
+  </script>
+
+</body>
+</html>
