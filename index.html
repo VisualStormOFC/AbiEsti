@@ -510,70 +510,382 @@
        STORY
     ========================================================= */
 
-    .story {
-      background: var(--cream-dark);
-    }
+    /* =========================================================
+   OUR LOVE STORY - COLLAGE
+========================================================= */
 
-    .timeline {
-      max-width: 800px;
-      margin: 80px auto 0;
-      position: relative;
-    }
+.story {
+  background: var(--cream-dark);
+  overflow: hidden;
+}
 
-    .timeline::before {
-      content: "";
-      position: absolute;
-      left: 50%;
-      top: 0;
-      bottom: 0;
-      width: 1px;
-      background: var(--gold-light);
-      transform: translateX(-50%);
-    }
+.story-list {
+  max-width: 1100px;
+  margin: 100px auto 0;
+}
 
-    .story-item {
-      width: 50%;
-      padding: 0 50px 70px;
-      position: relative;
-    }
 
-    .story-item:nth-child(even) {
-      margin-left: 50%;
-    }
+/* =========================================================
+   STORY CARD
+========================================================= */
 
-    .story-item::after {
-      content: "";
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: var(--gold);
-      position: absolute;
-      top: 5px;
-      right: -5px;
-    }
+.story-card {
+  min-height: 480px;
 
-    .story-item:nth-child(even)::after {
-      left: -5px;
-    }
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 
-    .story-year {
-      color: var(--gold);
-      letter-spacing: 3px;
-      font-size: 11px;
-    }
+  align-items: center;
 
-    .story-item h3 {
-      font-family: "Cormorant Garamond", serif;
-      font-size: 35px;
-      margin: 10px 0;
-      font-weight: 500;
-    }
+  gap: 80px;
 
-    .story-item p {
-      color: var(--brown-light);
-      font-size: 14px;
-      line-height: 1.8;
-    }
+  margin-bottom: 120px;
+
+  position: relative;
+}
+
+
+/* Cerita kedua dan keempat dibalik */
+
+.story-card.reverse {
+  direction: rtl;
+}
+
+.story-card.reverse .story-text {
+  direction: ltr;
+}
+
+
+/* =========================================================
+   STORY TEXT
+========================================================= */
+
+.story-text {
+  max-width: 430px;
+}
+
+.story-year {
+  color: var(--gold);
+
+  font-size: 11px;
+
+  letter-spacing: 5px;
+
+  text-transform: uppercase;
+}
+
+.story-text h3 {
+  font-family: "Cormorant Garamond", serif;
+
+  font-size: clamp(45px, 5vw, 65px);
+
+  line-height: .9;
+
+  font-weight: 500;
+
+  color: var(--brown);
+
+  margin: 15px 0 25px;
+}
+
+.story-text p {
+  color: var(--brown-light);
+
+  font-size: 14px;
+
+  line-height: 1.9;
+
+  max-width: 380px;
+}
+
+
+/* =========================================================
+   COLLAGE AREA
+========================================================= */
+
+.story-collage {
+  height: 430px;
+
+  position: relative;
+
+  width: 100%;
+
+  max-width: 500px;
+
+  margin: auto;
+}
+
+
+/* =========================================================
+   PHOTO FRAME
+========================================================= */
+
+.photo {
+  position: absolute;
+
+  overflow: hidden;
+
+  background: #fff;
+
+  padding: 8px;
+
+  box-shadow:
+    0 20px 50px rgba(50, 40, 30, .16);
+
+  transition:
+    transform .7s ease,
+    box-shadow .7s ease;
+}
+
+.photo img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  display: block;
+}
+
+
+/* Foto utama */
+
+.photo-main {
+  width: 300px;
+  height: 390px;
+
+  left: 50%;
+  top: 15px;
+
+  transform:
+    translateX(-50%)
+    rotate(-3deg);
+
+  z-index: 3;
+}
+
+
+/* Foto kecil kanan */
+
+.photo-small {
+  width: 190px;
+  height: 230px;
+
+  right: 0;
+  top: 0;
+
+  transform: rotate(8deg);
+
+  z-index: 2;
+}
+
+
+/* Foto kecil kiri */
+
+.photo-mini {
+  width: 170px;
+  height: 210px;
+
+  left: 0;
+  bottom: 0;
+
+  transform: rotate(-9deg);
+
+  z-index: 4;
+}
+
+
+/* =========================================================
+   HOVER
+========================================================= */
+
+.story-collage:hover .photo-main {
+  transform:
+    translateX(-50%)
+    rotate(0deg)
+    scale(1.03);
+}
+
+.story-collage:hover .photo-small {
+  transform:
+    rotate(12deg)
+    translateY(-8px);
+}
+
+.story-collage:hover .photo-mini {
+  transform:
+    rotate(-13deg)
+    translateY(8px);
+}
+
+
+/* =========================================================
+   DECORATIVE LINE
+========================================================= */
+
+.story-card:not(:last-child)::after {
+  content: "";
+
+  position: absolute;
+
+  bottom: -60px;
+
+  left: 50%;
+
+  width: 1px;
+  height: 45px;
+
+  background: var(--gold-light);
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+  .story-list {
+    margin-top: 65px;
+  }
+
+  .story-card,
+  .story-card.reverse {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 40px;
+
+    min-height: auto;
+
+    margin-bottom: 100px;
+
+    direction: ltr;
+
+  }
+
+
+  .story-text {
+
+    width: 100%;
+
+    max-width: none;
+
+    text-align: center;
+
+    order: 1;
+
+  }
+
+
+  .story-text p {
+
+    margin: auto;
+
+  }
+
+
+  .story-collage {
+
+    order: 2;
+
+    width: 100%;
+
+    height: 380px;
+
+    max-width: 430px;
+
+  }
+
+
+  .photo-main {
+
+    width: 245px;
+
+    height: 320px;
+
+    left: 50%;
+
+    top: 15px;
+
+  }
+
+
+  .photo-small {
+
+    width: 145px;
+
+    height: 185px;
+
+    right: 0;
+
+    top: 0;
+
+  }
+
+
+  .photo-mini {
+
+    width: 135px;
+
+    height: 170px;
+
+    left: 0;
+
+    bottom: 0;
+
+  }
+
+
+  .story-card:not(:last-child)::after {
+
+    left: 50%;
+
+    bottom: -55px;
+
+  }
+
+}
+
+
+/* =========================================================
+   SMALL PHONE
+========================================================= */
+
+@media (max-width: 420px) {
+
+  .story-collage {
+
+    height: 330px;
+
+  }
+
+  .photo-main {
+
+    width: 210px;
+
+    height: 275px;
+
+  }
+
+  .photo-small {
+
+    width: 125px;
+
+    height: 160px;
+
+  }
+
+  .photo-mini {
+
+    width: 115px;
+
+    height: 150px;
+
+  }
+
+}
 
     /* =========================================================
        FOOTER
@@ -946,15 +1258,6 @@
 
           <div class="person reveal">
 
-            <div class="person-photo">
-
-              <img
-                src=""
-                alt="Abi"
-              >
-
-            </div>
-
             <h3>Mochammad Abi Rizky</h3>
 
             <p class="parents">
@@ -964,17 +1267,7 @@
 
           </div>
 
-
           <div class="person reveal">
-
-            <div class="person-photo">
-
-              <img
-                src=""
-                alt="Esti"
-              >
-
-            </div>
 
             <h3>Esti Dwi Setyo Ayu</h3>
 
@@ -1118,96 +1411,193 @@
          STORY
     ====================================================== -->
 
-    <section class="story">
+  <section class="story" id="story">
 
-      <div class="container">
+  <div class="container">
 
-        <div class="center reveal">
+    <div class="center reveal">
 
-          <div class="section-label">
-            Our Journey
-          </div>
-
-          <h2 class="section-title">
-            Our Love Story
-          </h2>
-
-          <div class="ornament"></div>
-
-        </div>
-
-
-        <div class="timeline">
-
-          <div class="story-item reveal">
-
-            <div class="story-year">
-              2020
-            </div>
-
-            <h3>First Meet</h3>
-
-            <p>
-              Berawal dari sebuah pertemuan sederhana
-              yang ternyata menjadi awal dari cerita panjang
-              kami.
-            </p>
-
-          </div>
-
-
-          <div class="story-item reveal">
-
-            <div class="story-year">
-              2022
-            </div>
-
-            <h3>A Beautiful Journey</h3>
-
-            <p>
-              Kami mulai mengenal satu sama lain lebih dalam
-              dan belajar untuk tumbuh bersama.
-            </p>
-
-          </div>
-
-
-          <div class="story-item reveal">
-
-            <div class="story-year">
-              2025
-            </div>
-
-            <h3>The Proposal</h3>
-
-            <p>
-              Dengan penuh keyakinan, kami memutuskan
-              untuk membawa hubungan ini menuju tahap berikutnya.
-            </p>
-
-          </div>
-
-
-          <div class="story-item reveal">
-
-            <div class="story-year">
-              2026
-            </div>
-
-            <h3>Forever Starts Here</h3>
-
-            <p>
-              Hari ketika dua hati memilih untuk berjalan
-              bersama dalam satu ikatan pernikahan.
-            </p>
-
-          </div>
-
-        </div>
-
+      <div class="section-label">
+        Our Journey
       </div>
 
-    </section>
+      <h2 class="section-title">
+        Our Love Story
+      </h2>
+
+      <div class="ornament"></div>
+
+      <p class="section-description">
+        Setiap foto menyimpan cerita, dan setiap cerita
+        membawa kami semakin dekat menuju hari bahagia.
+      </p>
+
+    </div>
+
+
+    <div class="story-list">
+
+      <!-- STORY 1 -->
+
+      <article class="story-card reveal">
+
+        <div class="story-text">
+
+          <span class="story-year">
+            2020
+          </span>
+
+          <h3>
+            First Meet
+          </h3>
+
+          <p>
+            Berawal dari sebuah pertemuan sederhana
+            yang ternyata menjadi awal dari cerita
+            panjang kami.
+          </p>
+
+        </div>
+
+
+        <div class="story-collage">
+
+          <div class="photo photo-main">
+            <img
+              src="images/photo1.jpg"
+              alt="First Meet"
+            >
+          </div>
+
+          <div class="photo photo-small">
+            <img
+              src="images/photo2.jpg"
+              alt="Our Moment"
+            >
+          </div>
+
+          <div class="photo photo-mini">
+            <img
+              src="images/photo3.jpg"
+              alt="Our Memory"
+            >
+          </div>
+
+        </div>
+
+      </article>
+
+
+      <!-- STORY 2 -->
+
+      <article class="story-card reverse reveal">
+
+        <div class="story-text">
+
+          <span class="story-year">
+            2022
+          </span>
+
+          <h3>
+            A Beautiful Journey
+          </h3>
+
+          <p>
+            Kami mulai mengenal satu sama lain lebih
+            dalam dan belajar untuk tumbuh bersama
+            dalam berbagai keadaan.
+          </p>
+
+        </div>
+
+
+        <div class="story-collage">
+
+          <div class="photo photo-main">
+            <img
+              src="images/photo4.jpg"
+              alt="Beautiful Journey"
+            >
+          </div>
+
+          <div class="photo photo-small">
+            <img
+              src="images/photo5.jpg"
+              alt="Our Journey"
+            >
+          </div>
+
+          <div class="photo photo-mini">
+            <img
+              src="images/photo6.jpg"
+              alt="Our Memory"
+            >
+          </div>
+
+        </div>
+
+      </article>
+
+
+      <!-- STORY 3 -->
+
+      <article class="story-card reveal">
+
+        <div class="story-text">
+
+          <span class="story-year">
+            2025
+          </span>
+
+          <h3>
+            The Proposal
+          </h3>
+
+          <p>
+            Dengan penuh keyakinan, kami memutuskan
+            untuk membawa hubungan ini menuju
+            tahap berikutnya.
+          </p>
+
+        </div>
+
+
+        <div class="story-collage">
+
+          <div class="photo photo-main">
+            <img
+              src="images/photo8.png"
+              alt="The Proposal"
+            >
+          </div>
+
+          <div class="photo photo-small">
+            <img
+              src="images/photo7.jpg"
+              alt="Proposal Moment"
+            >
+          </div>
+
+          <div class="photo photo-mini">
+            <img
+              src="images/photo9.png"
+              alt="Our Memory"
+            >
+          </div>
+
+        </div>
+
+      </article>
+
+        </div>
+
+      </article>
+
+    </div>
+
+  </div>
+
+</section>
 
   <!-- =======================================================
        FOOTER
